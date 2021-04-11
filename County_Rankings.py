@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+import os
 
 import pandas as pd
 import numpy as np
@@ -250,6 +251,15 @@ bottom = """
 </html>
 """
 
+region_mappings = {'New England': 'northeast',
+                   'Middle Atlantic': 'northeast',
+                   'East North Central': 'midwest',
+                   'West North Central': 'midwest',
+                   'South Atlantic': 'south',
+                   'East South Central': 'south',
+                   'West South Central': 'south',
+                   'Mountain': 'west',
+                   'Pacific': 'west'}
 
 styles=[hover(),]
 for region in Regions:
@@ -258,6 +268,16 @@ for region in Regions:
         print(region)
         #Fix NaN and sort
         Regions[region] = Regions[region].dropna(subset=['New Cases in Last 14 Days']).astype({"COVID-Free Days": int, "New Cases in Last 14 Days": int, "Last 7 Days": int, 'Pct Change': float})
+
+        # Save pickle and last updated time for visualizations
+        region_path = f"usa/{region_mappings[region]}/{region.lower().replace(' ', '-')}"
+        pickle_file = f"visualizations/pickles/{region_path}.pkl"
+        last_updated_file = f"visualizations/last-updated/{region_path}.log"
+        os.makedirs(os.path.dirname(pickle_file), exist_ok=True)
+        os.makedirs(os.path.dirname(last_updated_file), exist_ok=True)
+        Regions[region].to_pickle(pickle_file)
+        with open(last_updated_file, 'w') as file:
+            file.write(datetime.utcnow().strftime('%m/%d/%Y %H:%M:%S UTC'))
 
         Regions[region]['Trend'] = Regions[region]['Pct Change'].map(arrow)
         #Regions[region]['Pct Change'] = Regions[region]['Pct Change'].map('{:,.2f}%'.format) 

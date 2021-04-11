@@ -1,0 +1,35 @@
+page_title: "Green-zone Rankings for USA's East North Central Region"
+visualizations:
+  - case:
+      title: "Green-zone Rankings for USA's East North Central Region"
+      region_key: "County"
+      region_name_tooltip: "County"
+      searchbar_placeholder: "Search for a county..."
+      labels:
+        - ~
+        - "Green Zone"
+        - "Phase 4"
+        - "Phase 3"
+        - "Phase 2"
+        - "Phase 1"
+      descriptions:
+        - ~
+        - "0 new cases in 14 days"
+        - "<20 new cases in 14 days"
+        - "<200 new cases in 14 days"
+        - "<1000 new cases in 14 days"
+        - ">1000 new cases in 14 days"
+      lower_bounds:
+        - ~
+        - 0
+        - 1
+        - 20
+        - 200
+        - 1000
+      colors:
+        - ~
+        - "#25773b"
+        - "#8ac541"
+        - "#f9cc3c"
+        - "#f8961d"
+        - "#ef3e24"

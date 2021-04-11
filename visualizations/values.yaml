@@ -1,0 +1,52 @@
+# This is the list of regions that will be deployed. The 'path' value is required and should correspond directly to
+# the name of the visualization configuration YAML files. If you wish to integrate your visualizations with the
+# home page, you need to add the 'name' and 'fake' values (default: false), as shown below. The 'name' value
+# allows you to set the exact display name for your region and the 'fake' value must be used to indicate when
+# a region does not have a visualization. This may occur, for example, if you have visualizations for some cities
+# and you represent them as subregions of a state, but you do not have a visualization for that state.
+regions:
+  - name: United States of America
+    path: usa
+    fake: true
+
+  - name: West
+    path: usa/west
+    fake: true
+  - name: Mountain Region
+    path: usa/west/mountain
+  - name: Pacific Region
+    path: usa/west/pacific
+
+  - name: Northeast
+    path: usa/northeast
+    fake: true
+  - name: New England Region
+    path: usa/northeast/new-england
+  - name: Middle Atlantic Region
+    path: usa/northeast/middle-atlantic
+
+  - name: Midwest
+    path: usa/midwest
+    fake: true
+  - name: East North Central Region
+    path: usa/midwest/east-north-central
+  - name: West North Central Region
+    path: usa/midwest/west-north-central
+
+  - name: South
+    path: usa/south
+    fake: true
+  - name: East South Central Region
+    path: usa/south/east-south-central
+  - name: West South Central Region
+    path: usa/south/west-south-central
+  - name: South Atlantic Region
+    path: usa/south/south-atlantic
+
+# This is the list of origins that will be allowed to connect to the visualization server. Any domains used
+# to view the visualizations should be listed here, otherwise the requests will be blocked.
+allowedOrigins:
+  - localhost
+  - nocovid.group
+  - ec19.org
+  - endcoronavirus.org
