@@ -5,6 +5,8 @@ visualizations:
       region_key: "County"
       region_name_tooltip: "County"
       searchbar_placeholder: "Search for a county..."
+      total_display_regions: 12
+      min_display_regions: 3
       labels:
         - ~
         - "Green Zone"
